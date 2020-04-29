@@ -1,0 +1,36 @@
+
+@font-face {
+  font-family: 'Wigrum';
+  src: url('./assets/fonts/Wigrum-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Wigrum';
+  src: url('./assets/fonts/Wigrum-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Wigrum';
+  src: url('./assets/fonts/Wigrum-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Wigrum';
+  src: url('./assets/fonts/Wigrum-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Wigrum';
+  src: url('./assets/fonts/Wigrum-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
