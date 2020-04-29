@@ -20,14 +20,17 @@ const App = () => {
       </Container>
     </Root>
   );
-}
+};
 
 export default App;
 
 const Container = styled.div`
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    height: calc(100vh - ${theme.offset}px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: calc(100vh - ${theme.offset}px);
+  @media (min-width: 320px) and (max-width: 480px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const Root = styled.div`

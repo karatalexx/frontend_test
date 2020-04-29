@@ -32,10 +32,20 @@ export const ProfileList: React.FC<ProfileListProps> = () => {
 const Root = styled.div`
     padding: ${theme.offset}px 30px 0 30px;
     height: 100%;
+    max-height: calc(100vh - ${theme.offset}px);
+    overflow: hidden;
+     @media (min-width: 320px) and (max-width: 480px) {
+      overflow: visible;
+     }
 `;
 
 const UserTable = styled.div`
     display: grid;
     grid-template-columns: 1fr;
     grid-row-gap: 10px;
+    overflow-y: scroll;
+    height: 100%;
+    @media (min-width: 320px) and (max-width: 480px) {
+     overflow-y: initial;
+    }
 `;

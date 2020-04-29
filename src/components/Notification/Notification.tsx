@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { theme } from 'theme';
 
 // assets
-import notification from 'assets/notification.svg'
+import { Bell } from 'components/icons/Bell';
 
 interface NotificationProps {
 
@@ -13,7 +13,7 @@ interface NotificationProps {
 export const Notification: React.FC<NotificationProps> = () => {
   return (
     <Root>
-      <img src={notification} alt=""/>
+      <Bell/>
       <Counter>
         2
       </Counter>
@@ -22,7 +22,7 @@ export const Notification: React.FC<NotificationProps> = () => {
 };
 
 const Root = styled.div`
-  margin: 0 10px;
+  margin: 0 15px;
   display: flex;
   justify-content: center;
   align-items: center;

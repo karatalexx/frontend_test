@@ -4,10 +4,9 @@ import { theme } from 'theme';
 
 import { CurrentUser } from 'components/CurrentUser/CurrentUser';
 import { Notification } from 'components/Notification/Notification';
+import { Burger } from 'components/icons/Burger';
 
-import burger from 'assets/burger.svg';
-
-interface MenuProps {
+interface NavigationProps {
 
 }
 
@@ -19,7 +18,7 @@ const LINKS = [
 ];
 
 
-export const Navigation = () => {
+export const Navigation: React.FC<NavigationProps> = () => {
   return (
     <Root>
       <DesktopContainer>
@@ -27,15 +26,20 @@ export const Navigation = () => {
       </DesktopContainer>
       <LeftSide>
         <CurrentUser/>
-        <Notification/>
-        <img src={burger} alt=""/>
+        <Actions>
+          <Notification/>
+          <Burger/>
+        </Actions>
       </LeftSide>
     </Root>
   );
 };
 
 const DesktopContainer = styled.div`
-    padding: 17px 0 0 30px;
+  padding: 17px 0 0 30px;
+  @media (min-width: 320px) and (max-width: 480px) {
+    display: none;
+}
 `;
 
 const MenuItem = styled.a`
@@ -51,7 +55,9 @@ const MenuItem = styled.a`
 `;
 
 const Root = styled.div`
-  position: fixed;
+  position: absolute;
+  left: 0;
+  top:0;
   display: flex;
   justify-content: space-between;
   width: 100vw;
@@ -61,5 +67,15 @@ const LeftSide = styled.div`
   display: flex;
   align-items: center;
   margin: 10px 30px 0 0;
+ @media (min-width: 320px) and (max-width: 480px) {
+  width: 100%;
+  justify-content: space-between;
+ }
+`;
+
+const Actions = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 

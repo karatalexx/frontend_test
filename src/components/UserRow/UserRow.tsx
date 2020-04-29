@@ -1,39 +1,44 @@
 import React from 'react';
+import useMedia from 'use-media';
 
 import { Avatar } from 'components/Avatar/Avatar';
 
 import { User } from 'services/UserService';
 import styled from 'styled-components';
 import { theme } from 'theme';
+import { getFullName } from 'utils';
 
 interface UserRowProps {
   data: User;
 }
 
 export const UserRow: React.FC<UserRowProps> = ({data}) => {
+  const isMobile = useMedia('(min-width: 320px) and (max-width: 480px)');
   return (
     <Root>
       <AvatarSection>
-        <Avatar size={72} src={data.avatar}/>
+        <Avatar size={isMobile ? 52 : 72} src={data.avatar}/>
       </AvatarSection>
-      <FullName>
-        {`${data.first_name} ${data.last_name}`}
-      </FullName>
-      <EmailSection>
-        <EmailTitle>
-          User email address
-        </EmailTitle>
-        <EmailValue>
-          {data.email}
-        </EmailValue>
-      </EmailSection>
+      <Grid>
+        <FullName>
+          {getFullName(data)}
+        </FullName>
+        <EmailSection>
+          <EmailTitle>
+            User email address
+          </EmailTitle>
+          <EmailValue>
+            {data.email}
+          </EmailValue>
+        </EmailSection>
+      </Grid>
     </Root>
   );
 };
 
 const Root = styled.div`
   width: 100%;
-  height: 90px;
+  height: 88px;
   display: flex;
   border-bottom: 2px solid ${theme.palette.gray};
 
@@ -41,21 +46,21 @@ const Root = styled.div`
 
 const AvatarSection = styled.div`
   background: ${theme.palette.gray};
-  width: 100%;
-  max-width: 142px ;
-  min-width: 80px ;
+  width: 142px ;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   border-bottom: 2px solid ${theme.palette.main};
+   @media (min-width: 320px) and (max-width: 480px) {
+    width: 80px;
+   }
 `;
 
 const FullName = styled.span`
   display: flex;
   align-items: center;
   margin: 0 0 0 20px;
-  width: 200px;
 `;
 
 const EmailSection = styled.div`
@@ -64,6 +69,10 @@ const EmailSection = styled.div`
   justify-content: center;
   align-items: flex-end;
   width: 100%;
+   @media (min-width: 320px) and (max-width: 480px) {
+     align-items: flex-start;
+     margin: 0 0 0 20px;
+   }
 `;
 
 const EmailTitle = styled.span`
@@ -74,10 +83,23 @@ const EmailTitle = styled.span`
   color: ${theme.palette.text};
   mix-blend-mode: normal;
   opacity: 0.5;
+   @media (min-width: 320px) and (max-width: 480px) {
+    display: none;
+   }
 `;
 
 const EmailValue = styled.span`
   font-size: 16px;
   line-height: 24px;
   color: #CD845C
+`;
+
+const Grid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+   @media (min-width: 320px) and (max-width: 480px) {
+       grid-template-columns: 1fr;
+       align-content: center;
+   }
 `;

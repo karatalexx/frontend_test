@@ -33,7 +33,7 @@ class UserService {
   }
 
   users() {
-    return this.http.get<ApiResponse<User[]>>('users?per_page=8').then(flatData);
+    return this.http.get<ApiResponse<User[]>>('users?per_page=15').then(flatData);
   }
 
   current() {

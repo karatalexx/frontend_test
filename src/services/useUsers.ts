@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import UserService, { User } from './UserService';
+import { sortReverse } from 'utils';
 
 interface useUsersInstance {
   data: User[];
@@ -16,7 +17,7 @@ export const useUsers = (): useUsersInstance => {
   useEffect(() => {
     setLoading(true);
     UserService.users()
-      .then((response) => setData(response.data))
+      .then((response) => setData(response.data.sort(sortReverse)))
       .catch(e => setError(true))
       .finally(() => setLoading(false));
   }, []);

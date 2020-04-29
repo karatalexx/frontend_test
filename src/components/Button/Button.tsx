@@ -2,13 +2,16 @@ import React from 'react';
 import styled from 'styled-components';
 
 interface ButtonProps {
-    children: React.ReactNode;
+  children: React.ReactNode;
+  onClick?: (...args: any[]) => any;
 }
 
-export const Button: React.FC<ButtonProps> = (props) => {
+const dammy = () => {};
+
+export const Button: React.FC<ButtonProps> = ({ children, onClick = dammy }) => {
   return (
-    <Container>
-      {props.children}
+    <Container onClick={onClick}>
+      {children}
     </Container>
   );
 };
