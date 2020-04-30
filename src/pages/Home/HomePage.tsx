@@ -1,18 +1,17 @@
 import React from 'react';
+import styled from 'styled-components';
+import { theme } from 'theme';
 
 import { Title } from 'components/Title/Title';
 import { Button } from 'components/Button/Button';
 import { Text } from 'components/Text/Text';
+import { Logo } from 'components/icons/Logo';
 
-import logo from 'assets/logo.svg';
 
-import styled from 'styled-components';
-import { theme } from 'theme';
 
 interface HomePageProps {
 
 }
-
 
 export const HomePage: React.FC<HomePageProps> = () => {
   const redirect = (path: string) => () => window.open(path);
@@ -24,9 +23,8 @@ export const HomePage: React.FC<HomePageProps> = () => {
           <Title>
             Welcome! Thanks <br/> for joining us.
           </Title>
-          <Logo src={logo} alt=""/>
+          <Logo />
           <Button onClick={redirect('https://www.google.com/')}>Set up your account</Button>
-          <Space height={100}/>
         </Content>
         <Description>
           <SmallTitle>
@@ -54,24 +52,12 @@ const Root = styled.div`
    }
 `;
 
-const Logo = styled.img`
-  width: 100%;
-   @media (min-width: 320px) and (max-width: 480px) {
-    margin: 30px 0;
-   }
-`;
-
 const Center = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
-`;
-
-const Space = styled.div<{ height: number }>`
-  width: 100%;
-  height: ${props => props.height}px
 `;
 
 const SmallTitle = styled.div`
@@ -91,6 +77,7 @@ const Content = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+  padding: 0 0 50px 0;
 `;
 
 const Description = styled.div`

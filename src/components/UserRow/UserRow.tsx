@@ -1,10 +1,11 @@
 import React from 'react';
+import styled from 'styled-components';
 import useMedia from 'use-media';
+import { motion } from 'framer-motion';
 
 import { Avatar } from 'components/Avatar/Avatar';
-
 import { User } from 'services/UserService';
-import styled from 'styled-components';
+
 import { theme } from 'theme';
 import { getFullName } from 'utils';
 
@@ -17,7 +18,9 @@ export const UserRow: React.FC<UserRowProps> = ({data}) => {
   return (
     <Root>
       <AvatarSection>
-        <Avatar size={isMobile ? 52 : 72} src={data.avatar}/>
+        <motion.div whileHover={{scale: 1.1}}>
+          <Avatar size={isMobile ? 52 : 72} src={data.avatar}/>
+        </motion.div>
       </AvatarSection>
       <Grid>
         <FullName>
